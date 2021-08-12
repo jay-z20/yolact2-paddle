@@ -116,7 +116,8 @@ coco2017_testdev_dataset = dataset_base.copy({
 **训练 `log`**
 `B: Localization Loss   C: Confidence loss  M: Mask loss  S:Semantic segmentation loss`
 
-![image](https://user-images.githubusercontent.com/25956447/129172494-84c6fdb7-16ba-4009-bbaf-ff52be294e0c.png)
+![image](https://user-images.githubusercontent.com/25956447/129243710-af81ef0f-ca86-4b40-9ac0-520d6b99d879.png)
+
 
 
 ## 六、代码结构与详细说明
