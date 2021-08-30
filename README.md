@@ -23,6 +23,12 @@ https://github.com/PaddlePaddle/PaddleSeg
 ## 二、复现精度
 **COCO test-dev2017**
 
+新建 `weights` 复制下面模型参数到 `weights` 目录
+
+```
+mkdir  weights
+```
+
 `Resnet50` 预训练模型 [百度网盘](https://pan.baidu.com/s/1IsfWKrPhlLTf6d6iDXNVsw) 提取码：cttr
 
 | Image Size | Backbone      | mAP  |download|
@@ -117,6 +123,7 @@ coco2017_testdev_dataset = dataset_base.copy({
 ├─layers                          # 中间处理过程和 loss
    |--modules
       |--multibox_loss.py         # 训练的 loss
+|--weights                        # 保存模型参数
 ├─logs                            # 训练日志
 ├─utils                           # 工具包（计时、日志记录、数据增强）
 │--backbone.py                    # backbone(resnet 实现)
