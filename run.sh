@@ -2,6 +2,7 @@
 # 训练脚本
 # validation_epoch 用于设置 val 测试起始 epoch，默认 35W ，也就是 35w epoch 之后 每 1w 个 epoch 进行 val
 # 这里设置为 10000，就是 1w 个 epoch 开始进行 valid
+# 因为 valid 写在 保存模型之后，所以 validation_epoch 可设置为 n*1w 
 python train.py --config=yolact_plus_resnet50_config --batch_size=8 --validation_epoch=10000
 
 
