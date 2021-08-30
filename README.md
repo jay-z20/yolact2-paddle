@@ -1,16 +1,16 @@
-# yolact-paddle
+# YOLACT++ paddle
 
-论文：YOLACT: Real-time Instance Segmentation  
+论文：YOLACT++: Better Real-time Instance Segmentation
 使用 Paddle 复现
 
 
 ## 一、内容简介
 
-本项目基于paddlepaddle框架复现YOLACT，YOLACT是一种新的实例分割网络，由于没有使用两阶段方法中的pooling操作使得可以获得无损失的特征信息，并且在大目标的分割场景下性能表现更优秀
+本项目基于paddlepaddle框架复现YOLACT++，YOLACT++是一种新的实例分割网络，由于没有使用两阶段方法中的pooling操作使得可以获得无损失的特征信息，并且在大目标的分割场景下性能表现更优秀
 
 论文地址：
 
-https://arxiv.org/pdf/1904.02689.pdf
+https://arxiv.org/pdf/1912.06218.pdf
 
 参考项目：
 
@@ -23,10 +23,9 @@ https://github.com/PaddlePaddle/PaddleSeg
 ## 二、复现精度
 **COCO test-dev2017**
 
-| Image Size | Backbone      | FPS  | mAP  |download|
-|:----------:|:-------------:|:----:|:----:|:---:|
-| 550        | Resnet101-FPN | 6 | 29.8 |[百度网盘](https://pan.baidu.com/s/15H0BwHsfFnkjaxD9neiFdA) 提取码: 3g73 |
-| 700        | Resnet101-FPN | 6 | 31.2 |[百度网盘](https://pan.baidu.com/s/1fkTqmOXbZOi-TKwJJRwNJg) 提取码: vsv4 |
+| Image Size | Backbone      | mAP  |download|
+|:----------:|:-------------:|:----:|:----:|
+| 550        | Resnet101-FPN | 34.1 |[百度网盘](https://pan.baidu.com/s/15H0BwHsfFnkjaxD9neiFdA) 提取码: 3g73 |
 
 ## 三、数据集
 
@@ -35,13 +34,6 @@ COCO2017-完整数据集:
 https://aistudio.baidu.com/aistudio/datasetdetail/97273
 
 
-image_info_test2017.zip (image_info_test-dev2017.json):
-
-https://cocodataset.org/#download
-
-test2017 (6339.04M):
-
-https://aistudio.baidu.com/aistudio/datasetdetail/12716/0
 
 ## 四、环境依赖
 
@@ -107,17 +99,10 @@ coco2017_testdev_dataset = dataset_base.copy({
 ```
 
 **预测**
-> python eval.py --trained_model yolact_base_54_800000.pdparams --output_coco_json  --dataset=coco2017_testdev_dataset --cuda=True
-`result` 文件夹中 `mask_detections.json` 生成结果
+> 参考 `run.sh`
 
 **训练**
-> python train.py --config=yolact_base_config --batch_size=2 --trained_model=yolact_base_54_800000.pdparams
-
-**训练 `log`**
-`B: Localization Loss   C: Confidence loss  M: Mask loss  S:Semantic segmentation loss`
-
-![image](https://user-images.githubusercontent.com/25956447/129243710-af81ef0f-ca86-4b40-9ac0-520d6b99d879.png)
-
+> 参考 `run.sh`
 
 
 ## 六、代码结构与详细说明
@@ -141,26 +126,10 @@ coco2017_testdev_dataset = dataset_base.copy({
 ```
 
 ### 6.2 评估流程
-> python eval.py --trained_model yolact_im700_54_800000.pdparams --output_coco_json  --dataset=coco2017_testdev_dataset --cuda=True
-> 
-> cd results
-> 
-> cp mask_detections.json detections_test-dev2017_yolact_results.json
-> 
-> zip detections_test-dev2017_yolact_results.zip detections_test-dev2017_yolact_results.json
+> 参考 `run.sh`
 
-在 `coco` 官网提交结果
-```
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.312
- Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.506
- Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.328
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.121
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.332
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.471
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.290
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.423
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.433
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.227
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.470
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.608
-```
+训练中数据记录：日志中可以找到
+
+>"mask": {"all": 34.1, "50": 53.35, "55": 50.95, "60": 48.02, "65": 44.9, "70": 41.01, "75": 36.17, "80": 30.07, "85": 21.89, "90": 12.05, "95": 2.62}
+
+
