@@ -23,9 +23,11 @@ https://github.com/PaddlePaddle/PaddleSeg
 ## 二、复现精度
 **COCO test-dev2017**
 
+`Resnet50` 预训练模型 [百度网盘](https://pan.baidu.com/s/1IsfWKrPhlLTf6d6iDXNVsw) 提取码：cttr
+
 | Image Size | Backbone      | mAP  |download|
 |:----------:|:-------------:|:----:|:----:|
-| 550        | Resnet50-FPN | 34.1 |[百度网盘](https://pan.baidu.com/s/15H0BwHsfFnkjaxD9neiFdA) 提取码: 3g73 |
+| 550        | Resnet50-FPN | 34.1 |[百度网盘](https://pan.baidu.com/s/1jfsLnUrz_2ck4vZoahiu7Q) 提取码: rmxj |
 
 ## 三、数据集
 
